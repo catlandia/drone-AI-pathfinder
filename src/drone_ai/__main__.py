@@ -5,6 +5,7 @@ Run with:
 
 Commands:
     demo        - Run demo visualization
+    map         - Show 3D movement map
     train       - Run curriculum learning
     plan        - Test path planning
 """
@@ -20,18 +21,20 @@ def main():
         epilog="""
 Commands:
   demo    Run demonstration with visualization
+  map     Show interactive 3D movement map
   train   Run curriculum learning sequence
   plan    Test path planning algorithms
 
 Examples:
   python -m drone_ai demo --task delivery_route --difficulty 0.7
+  python -m drone_ai map --task delivery_route
   python -m drone_ai train --render --episodes 500
   python -m drone_ai plan
         """
     )
 
     parser.add_argument("command", nargs="?", default="demo",
-                        choices=["demo", "train", "plan"],
+                        choices=["demo", "map", "train", "plan"],
                         help="Command to run")
     parser.add_argument("--task", type=str, default="delivery_route",
                         choices=["hover", "delivery", "delivery_route"])
@@ -68,6 +71,17 @@ Examples:
         if args.seed:
             sys.argv.extend(["--seed", str(args.seed)])
         train_main()
+
+    elif args.command == "map":
+        from .map_viewer import main as map_main
+        sys.argv = ["map"] + remaining
+        if args.task:
+            sys.argv.extend(["--task", args.task])
+        if args.difficulty:
+            sys.argv.extend(["--difficulty", str(args.difficulty)])
+        if args.seed:
+            sys.argv.extend(["--seed", str(args.seed)])
+        map_main()
 
     elif args.command == "plan":
         from .demo import test_path_planning

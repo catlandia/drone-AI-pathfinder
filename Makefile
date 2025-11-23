@@ -22,6 +22,7 @@ help:
 	@echo "Running:"
 	@echo "  make demo          Run demo with math controller"
 	@echo "  make demo-render   Run demo with visualization"
+	@echo "  make map           Show 3D movement map (interactive)"
 	@echo "  make train         Train AI with PPO (requires install-full)"
 	@echo "  make curriculum    Run curriculum learning"
 	@echo ""
@@ -53,6 +54,13 @@ demo-hover:
 
 demo-hard:
 	python -m drone_ai.demo --task delivery_route --difficulty 0.9 --render
+
+# 3D Map viewer
+map:
+	python -m drone_ai.map_viewer --task delivery_route --difficulty 0.5
+
+map-hard:
+	python -m drone_ai.map_viewer --task delivery_route --difficulty 0.9
 
 train:
 	python -m drone_ai.train_rl --algo ppo --task hover --timesteps 50000
