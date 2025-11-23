@@ -45,6 +45,9 @@ class DroneMapViewer:
             trail_length: Number of past positions to show in trail
             update_interval: Milliseconds between updates
         """
+        if not MATPLOTLIB_AVAILABLE:
+            raise ImportError("matplotlib is required for DroneMapViewer. Install with: pip install matplotlib")
+
         self.env = env
         self.trail_length = trail_length
         self.update_interval = update_interval
