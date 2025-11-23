@@ -22,6 +22,16 @@ This implements **Layer 2 (Path Finder AI)** of a 4-layer drone AI system:
 
 ### Option 1: One-line installer (easiest)
 
+**Windows:**
+```cmd
+git clone <repo-url>
+cd drone-AI-pathfinder
+install.bat               & REM Basic install
+install.bat full          & REM With AI training support
+install.bat help          & REM See options
+```
+
+**Linux/Mac:**
 ```bash
 git clone <repo-url>
 cd drone-AI-pathfinder
