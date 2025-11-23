@@ -20,19 +20,34 @@ This implements **Layer 2 (Path Finder AI)** of a 4-layer drone AI system:
 
 ## Quick Install
 
+### Option 1: One-line installer (easiest)
+
 ```bash
-# Clone the repo
 git clone <repo-url>
 cd drone-AI-pathfinder
+./install.sh              # Basic install
+./install.sh --full       # With AI training support
+./install.sh --help       # See all options
+```
 
-# Install in development mode
-pip install -e .
+### Option 2: Using Make
 
-# Or with visualization support
-pip install -e ".[viz]"
+```bash
+git clone <repo-url>
+cd drone-AI-pathfinder
+make install              # Basic install
+make install-full         # With AI training
+make help                 # See all commands
+```
 
-# Or with everything (viz + dev tools)
-pip install -e ".[all]"
+### Option 3: Manual pip install
+
+```bash
+git clone <repo-url>
+cd drone-AI-pathfinder
+pip install -e .          # Basic
+pip install -e ".[viz]"   # With visualization
+pip install -e ".[all]"   # Everything
 ```
 
 ## Quick Start
