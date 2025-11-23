@@ -223,9 +223,15 @@ echo  ============================================================
 echo   3D Movement Map Viewer
 echo  ============================================================
 echo.
-echo  This will show a 3D visualization of drone path planning.
+echo  This will show a real-time 3D visualization of drone movement.
+echo  - 3D view with rotating camera
+echo  - Top-down view (XY plane)
+echo  - Side view (altitude profile)
+echo  - Live drone position and trail
 echo.
-python -c "from drone_ai.visualization import visualize_path; from drone_ai.path_planning import PathPlanner; from drone_ai.simulation import generate_random_obstacles; import numpy as np; obs = generate_random_obstacles(5, (-10,10,-10,10,0,10), seed=42); p = PathPlanner(obs); path = p.plan_path(np.array([0,0,3]), np.array([8,8,5])); visualize_path(path, obs, np.array([0,0,3]), np.array([8,8,5]), '3D Drone Path')"
+echo  Close the window to return to menu.
+echo.
+python -m drone_ai.map_viewer --task delivery_route --difficulty 0.5
 echo.
 pause
 goto main_menu

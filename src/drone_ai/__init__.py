@@ -9,6 +9,7 @@ Stages: HOVER -> DELIVERY -> DELIVERY_ROUTE
 from .simulation import Drone, Obstacle
 from .environment import DroneEnv
 from .path_planning import PathPlanner
+from .visualization import visualize_path
 
 __version__ = "0.1.0"
-__all__ = ["Drone", "Obstacle", "DroneEnv", "PathPlanner"]
+__all__ = ["Drone", "Obstacle", "DroneEnv", "PathPlanner", "visualize_path"]
